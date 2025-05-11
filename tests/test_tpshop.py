@@ -3,14 +3,14 @@ from pages.user_page import UserPage
 from pages.admin_page import AdminPage
 from pages.shop_page import ShopPage
 from utils.config import ACCOUNT_DATA
+import allure
 
+@allure.epic("TP Shop电商系统")
+@allure.feature("完整订单流程测试")
 class TestShop:
-    # 移除 setup_method 方法，因为要使用 fixture
-    # def setup_method(self):
-    #     self.user_page = UserPage()
-    #     self.admin_page = AdminPage()
-    #     self.shop_page = ShopPage()
 
+    @allure.story("用户下单流程")
+    @allure.title("测试用户下单支付流程")
     @pytest.mark.run(order=1)
     def test_user_operations_before_receipt(self, setup_shop_page):
         self.shop_page = setup_shop_page
@@ -22,16 +22,8 @@ class TestShop:
         self.shop_page.pay_type()
         self.shop_page.pay_status()
 
-    # @pytest.mark.run(order=2)
-    # def test_qwer(self, setup_shop_page):
-    #     self.shop_page = setup_shop_page
-    #     print("开始执行 test_qwer 方法")
-    #     if hasattr(self.shop_page, 'result'):
-    #         print(f"self.shop_page.result 的值为: {self.shop_page.result}")
-    #     else:
-    #         print("self.shop_page 没有 result 属性")
-    #     print("结束执行 test_qwer 方法")
-        
+    @allure.story("后台订单处理")
+    @allure.title("测试后台订单处理流程")
     @pytest.mark.run(order=2)
     def test_admin_operations(self, setup_shop_page, setup_admin_page):
         self.shop_page = setup_shop_page
@@ -44,6 +36,8 @@ class TestShop:
         self.admin_page.delivery(self.shop_page.result)
         self.admin_page.confirm_delivery(self.shop_page.result)
 
+    @allure.story("用户确认收货")
+    @allure.title("测试用户确认收货流程")
     @pytest.mark.run(order=3)
     def test_user_operations_after_receipt(self, setup_shop_page):
         self.shop_page = setup_shop_page
