@@ -16,22 +16,24 @@ class ShopPage:
         assert response.status_code == 200, '验证码请求失败'
         print('获取验证码成功')
 
-    def login(self, username):
-        url = f'{BASE_URL}/index.php?m=Home&c=User&a=do_login&t=0.8035430559061323'
+    def login(self, username, password='123456', verify_code='8888'):
+        url = f'{BASE_URL}/index.php?m=Home&c=User&a=do_login'
         data = {
             'username': username,
-            'password': '123456',
-            'verify_code': '8888',
+            'password': password,
+            'verify_code': verify_code,
         }
         r = self.session.post(url, headers=HEADERS, data=data)
         data_login = r.json()
         assert data_login['status'] == 1, data_login['msg']
         print(data_login['msg'])
 
-    def add_cart(self):
+    def add_cart(self, goods_id='65', goods_spec='65', goods_num='1'):
         url = f'{BASE_URL}/index.php?m=Home&c=Cart&a=ajaxAddCart'
         data = {
-            'goods_id': '65',
+            'goods_id': goods_id,
+            'goods_spec[尺寸]': goods_spec,
+            'goods_num': goods_num,
             'goods_prom_type': '0',
             'shop_price': '2799.00',
             'store_count': '100',
