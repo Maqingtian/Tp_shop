@@ -28,28 +28,17 @@ class ShopPage:
         assert data_login['status'] == 1, data_login['msg']
         print(data_login['msg'])
 
-    def add_cart(self, goods_id='65', goods_spec='65', goods_num='1'):
+    def add_cart(self, goods_id, goods_spec, goods_num, goods_prom_type='0', shop_price='2799.00', store_count='100', market_price='2899.00', item_id='122'):
         url = f'{BASE_URL}/index.php?m=Home&c=Cart&a=ajaxAddCart'
         data = {
             'goods_id': goods_id,
             'goods_spec[尺寸]': goods_spec,
             'goods_num': goods_num,
-            'goods_prom_type': '0',
-            'shop_price': '2799.00',
-            'store_count': '100',
-            'market_price': '2899.00',
-            'start_time': '',
-            'end_time': '',
-            'activity_title': '',
-            'prom_detail': '',
-            'activity_is_on': '',
-            'item_id': '122',
-            'exchange_integral': '0',
-            'point_rate': '1',
-            'is_virtual': '0',
-            'goods_spec[尺寸]': '65',
-            'goods_num': '1',
-            'goods_id': '65'
+            'goods_prom_type': goods_prom_type,
+            'shop_price': shop_price,
+            'store_count': store_count,
+            'market_price': market_price,
+            'item_id': item_id
         }
         r = self.session.post(url, headers=HEADERS, data=data)
         data_add = r.json()
@@ -73,6 +62,9 @@ class ShopPage:
         assert data_cart['status'] == 1, data_cart['msg']
         print(data_cart['msg'], '订单id为:', data_cart['result'], '请及时付款')
         self.result = data_cart['result']
+        # 新增获取真实订单号
+        self.get_order_id()  # 调用已有方法获取订单号
+        return self.result
 
     def get_order_id(self):
         url = f'{BASE_URL}/index.php/Home/Order/order_detail/id/{self.result}.html'

@@ -16,7 +16,8 @@ class TestShop:
         self.shop_page = setup_shop_page
         self.shop_page.lg_verify_code()
         self.shop_page.login('maqingtian1@qq.com')
-        self.shop_page.add_cart()
+        # 添加完整的参数调用
+        self.shop_page.add_cart('65', '65', '1', '0', '2799.00', '100', '2899.00', '122')
         self.shop_page.get_cart('maqingtian1@qq.com')
         self.shop_page.get_order_id()
         self.shop_page.pay_type()
