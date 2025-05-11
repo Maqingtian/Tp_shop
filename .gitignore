@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.log
+*.pot
+.env
+venv/
+
+# IDE
+.vscode/
+.idea/
+
+# Allure
+allure-results/
+allure-report/
+
+# 系统文件
+Thumbs.db
+Desktop.ini
+
+# 本地配置文件
+config.local.ini
+*.local.*
+
+# 测试覆盖率
+.coverage
+htmlcov/
+
+# 包依赖
+site-packages/
+
+# 临时文件
+*.swp
+*.swo
+*~
