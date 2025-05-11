@@ -109,17 +109,17 @@ class ShopPage:
         assert data_order_confirm['status'] == 1, data_order_confirm['msg']
         print('确认收货', data_order_confirm['msg'])
 
-    def add_comment(self):
+    def add_comment(self, goods_id='65', score='5', content='6666666666'):
         url = f'{BASE_URL}/index.php/Home/Order/add_comment.html'
         data = {
             'order_id': self.result,
-            'goods_id': '65',
+            'goods_id': goods_id,
             'order_prom_type': '0',
-            'score': '5',
+            'score': score,
             'goods_rank': '5',
             'service_rank': '5',
             'deliver_rank': '5',
-            'content': '6666666666'
+            'content': content
         }
         r = self.session.post(url, data=data)
         data_comment = r.json()

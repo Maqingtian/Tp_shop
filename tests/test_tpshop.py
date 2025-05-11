@@ -45,4 +45,9 @@ class TestShop:
         self.shop_page.lg_verify_code()
         self.shop_page.login('maqingtian1@qq.com')
         self.shop_page.order_confirm()
-        self.shop_page.add_comment()
+        # 修改评论调用
+        self.shop_page.add_comment(
+            goods_id='65',
+            score='5',
+            content='自动生成的测试评论'
+        )

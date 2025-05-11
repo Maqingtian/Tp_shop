@@ -71,6 +71,15 @@ class MainWindow(QMainWindow):
         form_layout.addRow(QLabel("商品规格:"), self.goods_spec)
         form_layout.addRow(QLabel("数量:"), self.goods_num)
         
+        # 新增评论参数
+        self.comment_goods_id = QLineEdit("65")
+        self.comment_score = QLineEdit("5")
+        self.comment_content = QLineEdit("自动生成的测试评论")
+        
+        form_layout.addRow(QLabel("评论商品ID:"), self.comment_goods_id)
+        form_layout.addRow(QLabel("商品评分:"), self.comment_score)
+        form_layout.addRow(QLabel("评论内容:"), self.comment_content)
+        
         param_group.setLayout(form_layout)
         layout.addWidget(param_group)
 
@@ -179,8 +188,13 @@ class MainWindow(QMainWindow):
             self.appendReport("✅ 用户确认收货成功")
             
             # 添加评价
-            self.shop_page.add_comment()
-            self.appendReport("✅ 商品评价提交成功")
+            # 修改评论调用
+            self.shop_page.add_comment(
+                self.comment_goods_id.text(),
+                self.comment_score.text(),
+                self.comment_content.text()
+            )
+            self.appendReport("✅ 商品评价提交成功（评论内容：" + self.comment_content.text() + "）")
             
             # 生成测试报告
             self.appendReport("\n✅ 完整测试流程执行成功！")
