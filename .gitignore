@@ -30,6 +30,11 @@ htmlcov/
 # 包依赖
 site-packages/
 
+# 打包输出
+build/
+dist/
+*.spec
+
 # 临时文件
 *.swp
 *.swo
