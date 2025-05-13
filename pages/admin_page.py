@@ -1,12 +1,14 @@
 import requests
 import re
 from utils.config import BASE_URL, HEADERS
+from utils.request_utils import RequestUtils
 
 class AdminPage:
     delivery_data = ''
 
     def __init__(self):
         self.session = requests.Session()
+        self.request_utils = RequestUtils(self.session)
 
     def admin_index(self):
         url = f'{BASE_URL}/index.php/Admin/Admin/login'

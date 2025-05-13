@@ -39,3 +39,7 @@ dist/
 *.swp
 *.swo
 *~
+# 新增：忽略日志文件夹
+logs/
+# 新增：忽略Python编译文件
+*.pyc
