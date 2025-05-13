@@ -1,4 +1,4 @@
-BASE_URL = 'http://localhost'
+BASE_URL = 'https://frp-man.com:15320/'
 HEADERS = {
     'Content-Type': 'application/x-www-form-urlencoded'
 }

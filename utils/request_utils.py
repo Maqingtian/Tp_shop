@@ -3,6 +3,7 @@ import requests
 class RequestUtils:
     def __init__(self, session):
         self.session = session
+        self.session.verify = False
 
     def send_request(self, method, url, data=None, headers=None):
         try:
