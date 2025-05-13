@@ -1,10 +1,3 @@
-
-
-
-          
-根据工具调用历史，项目似乎是一个使用 Python 编写的自动化测试项目，依赖 PyQt5、requests 等库，并且使用 PyInstaller 进行打包。下面是一个基于这些信息生成的 `README.md` 文件示例：
-
-```markdown:c:\Users\Mmqt2\Desktop\TP_shop_Auto\TP_shop_Api_auto\README.md
 # TP Shop API 自动化工具
 
 ## 概述
@@ -77,6 +70,5 @@ pyinstaller TP_Shop_Tool.spec
 5. 创建一个新的 Pull Request。
 ```
 
-你可以将上述内容保存为 `README.md` 文件，放置在项目根目录下。如果项目有其他特殊需求或信息，请根据实际情况进行修改。 
 
         
